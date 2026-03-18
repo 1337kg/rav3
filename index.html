@@ -1,1 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Bem-vindo</title>
+  <style>
+    body {
+      background: #0f172a;
+      color: #22c55e;
+      font-family: monospace;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
 
+    #texto {
+      font-size: 3rem;
+      border-right: 3px solid #22c55e;
+      white-space: nowrap;
+      overflow: hidden;
+    }
+
+    .cursor {
+      animation: piscar 0.7s infinite;
+    }
+
+    @keyframes piscar {
+      0%, 50%, 100% { border-color: #22c55e; }
+      25%, 75% { border-color: transparent; }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="texto"></div>
+
+  <script>
+    const texto = "BEM-VINDO";
+    const elemento = document.getElementById("texto");
+    let i = 0;
+
+    function escrever() {
+      if (i < texto.length) {
+        elemento.textContent += texto.charAt(i);
+        i++;
+        setTimeout(escrever, 150);
+      }
+    }
+
+    escrever();
+  </script>
+
+</body>
+</html>
