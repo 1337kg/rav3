@@ -1,55 +1,119 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
-  <meta charset="UTF-8">
-  <title>Bem-vindo</title>
-  <style>
-    body {
-      background: #0f172a;
-      color: #22c55e;
-      font-family: monospace;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meus Links</title>
+    <style>
+        /* Configurações Gerais */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            overflow: hidden;
+        }
 
-    #texto {
-      font-size: 3rem;
-      border-right: 3px solid #22c55e;
-      white-space: nowrap;
-      overflow: hidden;
-    }
+        .container {
+            text-align: center;
+            width: 100%;
+            max-width: 400px;
+            padding: 20px;
+        }
 
-    .cursor {
-      animation: piscar 0.7s infinite;
-    }
+        /* Animação do Título */
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            opacity: 0;
+            transform: translateY(-20px);
+            animation: fadeInDown 1s forwards ease-out;
+            letter-spacing: 2px;
+        }
 
-    @keyframes piscar {
-      0%, 50%, 100% { border-color: #22c55e; }
-      25%, 75% { border-color: transparent; }
-    }
-  </style>
+        @keyframes fadeInDown {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Estilização dos Botões */
+        .links-container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .btn {
+            text-decoration: none;
+            color: white;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 15px 25px;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            border-radius: 50px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Efeito de Hover nos Botões */
+        .btn:hover {
+            background: white;
+            color: #1a1a2e;
+            transform: scale(1.05);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+        }
+
+        /* Animação de entrada dos botões (um por um) */
+        .btn {
+            opacity: 0;
+            animation: slideIn 0.8s forwards;
+        }
+
+        .btn:nth-child(1) { animation-delay: 0.5s; }
+        .btn:nth-child(2) { animation-delay: 0.8s; }
+        .btn:nth-child(3) { animation-delay: 1.1s; }
+
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateX(-30px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+    </style>
 </head>
 <body>
 
-  <div id="texto"></div>
+    <div class="container">
+        <h1 id="welcome-text">BEM-VINDO</h1>
 
-  <script>
-    const texto = "BEM-VINDO";
-    const elemento = document.getElementById("texto");
-    let i = 0;
+        <div class="links-container">
+            <a href="https://instagram.com/seu-perfil" class="btn" onclick="logClick('Instagram')">Instagram</a>
+            <a href="https://github.com/seu-usuario" class="btn" onclick="logClick('GitHub')">GitHub</a>
+            <a href="mailto:seuemail@exemplo.com" class="btn" onclick="logClick('Email')">Contato via Email</a>
+        </div>
+    </div>
 
-    function escrever() {
-      if (i < texto.length) {
-        elemento.textContent += texto.charAt(i);
-        i++;
-        setTimeout(escrever, 150);
-      }
-    }
+    <script>
+        // Pequena interação via JavaScript
+        document.addEventListener('DOMContentLoaded', () => {
+            const title = document.getElementById('welcome-text');
+            
+            // Adiciona um efeito extra de brilho ao carregar
+            setTimeout(() => {
+                title.style.textShadow = "0 0 20px #fff, 0 0 30px #4ecca3";
+            }, 1500);
+        });
 
-    escrever();
-  </script>
-
+        // Função para feedback no console quando clicar
+        function logClick(plataforma) {
+            console.log(`Redirecionando para: ${plataforma}`);
+        }
+    </script>
 </body>
 </html>
