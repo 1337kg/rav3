@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RV3</title>
+    <title>RV3 - Sorteio</title>
     <style>
         /* Configs gerais */
         body {
@@ -11,19 +11,21 @@
             padding: 0;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
-            height: 100vh;
+            min-height: 100vh;
             display: flex;
             justify-content: center;
-            align-items: center;
+            align-items: flex-start; /* Alinhado ao topo para permitir scroll */
             color: white;
-            overflow: hidden;
+            overflow-y: auto; /* Permite scroll */
+            padding-bottom: 50px;
         }
 
         .container {
             text-align: center;
             width: 100%;
-            max-width: 400px;
+            max-width: 500px;
             padding: 20px;
+            margin-top: 40px;
         }
 
         /* Animação do Título */
@@ -48,6 +50,7 @@
             display: flex;
             flex-direction: column;
             gap: 20px;
+            margin-bottom: 40px;
         }
 
         .btn {
@@ -60,10 +63,13 @@
             font-weight: bold;
             transition: all 0.3s ease;
             position: relative;
-            overflow: hidden;
+            opacity: 0;
+            animation: slideIn 0.8s forwards;
         }
 
-        /* Efeito de Hover nos Botões */
+        .btn:nth-child(1) { animation-delay: 0.5s; }
+        .btn:nth-child(2) { animation-delay: 0.8s; }
+
         .btn:hover {
             background: white;
             color: #1a1a2e;
@@ -71,19 +77,64 @@
             box-shadow: 0 10px 20px rgba(0,0,0,0.3);
         }
 
-        /* Animação de entrada dos botões (0 _ 0) */
-        .btn {
-            opacity: 0;
-            animation: slideIn 0.8s forwards;
-        }
-
-        .btn:nth-child(1) { animation-delay: 0.5s; }
-        .btn:nth-child(2) { animation-delay: 0.8s; }
-        .btn:nth-child(3) { animation-delay: 1.1s; }
-
         @keyframes slideIn {
             from { opacity: 0; transform: translateX(-30px); }
             to { opacity: 1; transform: translateX(0); }
+        }
+
+        /* --- Seção de Prêmios --- */
+        .premios-section {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            padding: 25px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            margin-top: 20px;
+            opacity: 0;
+            animation: fadeIn 1.5s forwards;
+            animation-delay: 1.2s;
+        }
+
+        @keyframes fadeIn {
+            to { opacity: 1; }
+        }
+
+        .premios-section h2 {
+            font-size: 1.2rem;
+            color: #4ecca3;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+        }
+
+        .tabela-premios {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.9rem;
+        }
+
+        .tabela-premios tr {
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .tabela-premios td {
+            padding: 12px 5px;
+            text-align: left;
+        }
+
+        .rank {
+            color: #4ecca3;
+            font-weight: bold;
+            width: 40%;
+        }
+
+        .premio-item {
+            color: #e0e0e0;
+        }
+
+        .porsche-highlight {
+            color: #ffd700 !important; /* Dourado para o 1º prêmio */
+            font-weight: 900;
         }
     </style>
 </head>
@@ -93,23 +144,69 @@
         <h1 id="welcome-text">BEM-VINDO</h1>
 
         <div class="links-container">
-            <a href="bet.html" class="btn" target="_blank" onclick="logClick('Bet')">Sorteio da Porsche 911! 🤑🤑🤑</br>Basta se Registar clicando AQUI</a>
+            <a href="bet.html" class="btn" target="_blank" onclick="logClick('Bet')">Sorteio da Porsche 911! 🤑🤑🤑<br>Basta se Registrar clicando AQUI</a>
             <a href="https://crieclub.com" class="btn" onclick="logClick('CrieClub')">Crie Club - PACKs para Edição 🎬</a>
+        </div>
+
+        <div class="premios-section">
+            <h2>Prêmios do Sorteio</h2>
+            <table class="tabela-premios">
+                <tr>
+                    <td class="rank porsche-highlight">1º PRÊMIO</td>
+                    <td class="premio-item porsche-highlight">PORSCHE 911</td>
+                </tr>
+                <tr>
+                    <td class="rank">2º a 3º</td>
+                    <td class="premio-item">MacBook Air M4</td>
+                </tr>
+                <tr>
+                    <td class="rank">4º a 6º</td>
+                    <td class="premio-item">iPhone 17 Pro</td>
+                </tr>
+                <tr>
+                    <td class="rank">7º ao 12º</td>
+                    <td class="premio-item">Apple Watch Series 11</td>
+                </tr>
+                <tr>
+                    <td class="rank">13º ao 21º</td>
+                    <td class="premio-item">PS5 Pro</td>
+                </tr>
+                <tr>
+                    <td class="rank">22º ao 33º</td>
+                    <td class="premio-item">AirPods Max</td>
+                </tr>
+                <tr>
+                    <td class="rank">34º ao 49º</td>
+                    <td class="premio-item">AirPods 4</td>
+                </tr>
+                <tr>
+                    <td class="rank">50º ao 60º</td>
+                    <td class="premio-item">R$ 2.500,00</td>
+                </tr>
+                <tr>
+                    <td class="rank">61º ao 75º</td>
+                    <td class="premio-item">R$ 1.500,00</td>
+                </tr>
+                <tr>
+                    <td class="rank">76º ao 90º</td>
+                    <td class="premio-item">R$ 750,00</td>
+                </tr>
+                <tr>
+                    <td class="rank">91º ao 100º</td>
+                    <td class="premio-item">R$ 500,00</td>
+                </tr>
+            </table>
         </div>
     </div>
 
     <script>
-        // Interação via JavaScript 165
         document.addEventListener('DOMContentLoaded', () => {
             const title = document.getElementById('welcome-text');
-            
-            // Adiciona um efeito feio de brilho ao carregar
             setTimeout(() => {
                 title.style.textShadow = "0 0 20px #fff, 0 0 30px #4ecca3";
             }, 1500);
         });
 
-        // Função para pingar no console quando clicar
         function logClick(plataforma) {
             console.log(`Redirecionando para: ${plataforma}`);
         }
