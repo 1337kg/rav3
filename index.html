@@ -14,9 +14,9 @@
             min-height: 100vh;
             display: flex;
             justify-content: center;
-            align-items: flex-start; /* Alinhado ao topo para permitir scroll */
+            align-items: flex-start;
             color: white;
-            overflow-y: auto; /* Permite scroll */
+            overflow-y: auto;
             padding-bottom: 50px;
         }
 
@@ -67,8 +67,10 @@
             animation: slideIn 0.8s forwards;
         }
 
+        /* CORREÇÃO DAS ANIMAÇÕES: Um delay para cada botão */
         .btn:nth-child(1) { animation-delay: 0.5s; }
         .btn:nth-child(2) { animation-delay: 0.8s; }
+        .btn:nth-child(3) { animation-delay: 1.1s; } /* O terceiro agora espera os outros */
 
         .btn:hover {
             background: white;
@@ -92,7 +94,7 @@
             margin-top: 20px;
             opacity: 0;
             animation: fadeIn 1.5s forwards;
-            animation-delay: 1.2s;
+            animation-delay: 1.5s; /* Aparece logo após o último botão */
         }
 
         @keyframes fadeIn {
@@ -133,7 +135,7 @@
         }
 
         .porsche-highlight {
-            color: #ffd700 !important; /* Dourado para o 1º prêmio */
+            color: #ffd700 !important;
             font-weight: 900;
         }
     </style>
@@ -146,7 +148,7 @@
         <div class="links-container">
             <a href="bet.html" class="btn" target="_blank" onclick="logClick('Bet')">Sorteio da Porsche 911! 🤑🤑🤑<br>Basta se Registrar clicando AQUI</a>
             <a href="https://crieclub.com" class="btn" onclick="logClick('CrieClub')">Crie Club - PACKs para Edição 🎬</a>
-            <a href="https://pay.kiwify.com.br/OUx0Hgb?afid=HlO3aE5X" class="btn" onclick="logClick('IA')">Domine a IA antes que ela domine você!</a>
+            <a href="https://pay.kiwify.com.br/OUx0Hgb?afid=HlO3aE5X" class="btn" onclick="logClick('IA')">Domine a IA antes que ela domine você! 🤖</a>
         </div>
 
         <div class="premios-section">
@@ -156,46 +158,16 @@
                     <td class="rank porsche-highlight">1º PRÊMIO</td>
                     <td class="premio-item porsche-highlight">PORSCHE 911</td>
                 </tr>
-                <tr>
-                    <td class="rank">2º a 3º</td>
-                    <td class="premio-item">MacBook Air M4</td>
-                </tr>
-                <tr>
-                    <td class="rank">4º a 6º</td>
-                    <td class="premio-item">iPhone 17 Pro</td>
-                </tr>
-                <tr>
-                    <td class="rank">7º ao 12º</td>
-                    <td class="premio-item">Apple Watch Series 11</td>
-                </tr>
-                <tr>
-                    <td class="rank">13º ao 21º</td>
-                    <td class="premio-item">PS5 Pro</td>
-                </tr>
-                <tr>
-                    <td class="rank">22º ao 33º</td>
-                    <td class="premio-item">AirPods Max</td>
-                </tr>
-                <tr>
-                    <td class="rank">34º ao 49º</td>
-                    <td class="premio-item">AirPods 4</td>
-                </tr>
-                <tr>
-                    <td class="rank">50º ao 60º</td>
-                    <td class="premio-item">R$ 2.500,00</td>
-                </tr>
-                <tr>
-                    <td class="rank">61º ao 75º</td>
-                    <td class="premio-item">R$ 1.500,00</td>
-                </tr>
-                <tr>
-                    <td class="rank">76º ao 90º</td>
-                    <td class="premio-item">R$ 750,00</td>
-                </tr>
-                <tr>
-                    <td class="rank">91º ao 100º</td>
-                    <td class="premio-item">R$ 500,00</td>
-                </tr>
+                <tr><td class="rank">2º a 3º</td><td class="premio-item">MacBook Air M4</td></tr>
+                <tr><td class="rank">4º a 6º</td><td class="premio-item">iPhone 17 Pro</td></tr>
+                <tr><td class="rank">7º ao 12º</td><td class="premio-item">Apple Watch Series 11</td></tr>
+                <tr><td class="rank">13º ao 21º</td><td class="premio-item">PS5 Pro</td></tr>
+                <tr><td class="rank">22º ao 33º</td><td class="premio-item">AirPods Max</td></tr>
+                <tr><td class="rank">34º ao 49º</td><td class="premio-item">AirPods 4</td></tr>
+                <tr><td class="rank">50º ao 60º</td><td class="premio-item">R$ 2.500,00</td></tr>
+                <tr><td class="rank">61º ao 75º</td><td class="premio-item">R$ 1.500,00</td></tr>
+                <tr><td class="rank">76º ao 90º</td><td class="premio-item">R$ 750,00</td></tr>
+                <tr><td class="rank">91º ao 100º</td><td class="premio-item">R$ 500,00</td></tr>
             </table>
         </div>
     </div>
